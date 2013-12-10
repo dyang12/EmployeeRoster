@@ -1,0 +1,7 @@
+<h3>Login</h3>
+<%= form_tag("/sessions", :method => "post") do %>
+	<%= label_tag(:email, "Email: ") %>
+	<%= text_field_tag(:email) %>
+	<br>
+	<%= submit_tag("Login") %>
+<% end %>

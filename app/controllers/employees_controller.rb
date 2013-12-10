@@ -1,6 +1,4 @@
 class EmployeesController < ApplicationController
-  before_filter :require_current_employee!
-  before_filter :require_admin_access! :except => [:show, :index]
   
   def show
     @employee = Employee.find(params[:id])
@@ -9,7 +7,7 @@ class EmployeesController < ApplicationController
   
   def index
     @employees = Employee.all
-    render :index
+    render :json => @employees
   end
   
   def new

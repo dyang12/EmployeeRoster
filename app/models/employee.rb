@@ -1,5 +1,5 @@
 class Employee < ActiveRecord::Base
-  attr_accessible :name, :email, :phone_number, :session_token, :manager_id
+  attr_accessible :name, :email, :phone_number, :admin, :session_token, :manager_id
   validates :name, :email, :phone_number, :session_token, :presence => true
   validates :email, :phone_number, :session_token, :uniqueness => true
   after_initialize :ensure_session_token
@@ -25,6 +25,8 @@ class Employee < ActiveRecord::Base
   
   private
   def ensure_session_token
-    self.session_token ||= self.class.generate_session_token
+    if self.session_token.length == 0 
+      self.session_token = self.class.generate_session_token
+    end
   end
 end
