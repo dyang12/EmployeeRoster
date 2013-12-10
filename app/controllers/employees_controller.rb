@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   before_filter :require_current_employee!
   before_filter :require_admin_access! :except => [:show, :index]
+  
   def show
     @employee = Employee.find(params[:id])
     render :show

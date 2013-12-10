@@ -5,7 +5,7 @@ module SessionsHelper
   end
   
   def current_employee
-    Employee.find_by_session_token(session[:session_token])
+    @current_employee || Employee.find_by_session_token(session[:session_token])
   end
   
   def logout_current_employee!
@@ -18,6 +18,6 @@ module SessionsHelper
   end
   
   def require_admin_access!
-    
+    render :text => "Admin Access Only" unless current_employee.admin
   end
 end
