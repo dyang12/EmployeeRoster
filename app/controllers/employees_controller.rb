@@ -37,7 +37,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     
     if @employee.update_attributes(params[:employee])
-      render :show
+      redirect_to :show
     else
       flash[:errors] = @employee.errors.full_messages
       render edit_employee_url(@employee)
@@ -46,6 +46,6 @@ class EmployeesController < ApplicationController
   
   def destroy
     Employee.find(params[:id]).destroy
-    render :index
+    redirect_to employees_url
   end
 end
