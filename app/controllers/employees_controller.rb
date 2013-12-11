@@ -24,7 +24,7 @@ class EmployeesController < ApplicationController
       redirect_to employee_url(@employee)
     else
       flash[:errors] = @employee.errors.full_messages
-      render new_employee_url
+      render :new
     end
   end
   
@@ -40,7 +40,7 @@ class EmployeesController < ApplicationController
       redirect_to :show
     else
       flash[:errors] = @employee.errors.full_messages
-      render edit_employee_url(@employee)
+      render :edit
     end
   end
   

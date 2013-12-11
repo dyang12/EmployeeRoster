@@ -1,5 +1,9 @@
 <%= button_to "All Employees", employees_url, :method => :get %>
 <h3>New Employee</h3>
+
+<%= render :partial => "layouts/errors" %>
+<br>
+
 <%= form_for @employee, :url => {:action => "create"} do |f| %>
   <input type="hidden" 
 			 name="authenticity_token"

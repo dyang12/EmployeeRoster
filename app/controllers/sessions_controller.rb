@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     
     if employee.nil?
       flash[:errors] = ["Invalid Email"]
-      redirect_to new_session_url
+      render :new
     else
       self.current_employee = employee
       redirect_to employee_url(employee)
