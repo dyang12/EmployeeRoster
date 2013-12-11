@@ -1,0 +1,33 @@
+<h3>Profile</h3>
+<%= button_to "All Employees", employees_url, :method => :get %>
+<% if  @employee.manager_id == current_employee.id %>
+	<%= button_to "Edit", edit_employee_url(@employee), :method => :get %>
+	<%= button_to "Delete", employee_url(@employee), :method => :delete %>
+<% elsif current_employee.admin && @employee.id == current_employee.id %>
+	<%= button_to "Edit", edit_employee_url(@employee), :method => :get %>
+<% end%>
+<br>
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><%= @employee.name %></td>
+	</tr>
+	<tr>
+		<td>Email:</td>
+		<td><%= @employee.email %></td>
+	</tr>
+	<tr>
+		<td>Phone Number:</td>
+		<td><%= @employee.phone_number %></td>
+	</tr>
+	<tr>
+		<td>Position:</td>
+		<td>
+			<% if @employee.admin %>
+				<%= "Manager" %>
+			<% else %>
+				<%= "Staff Member" %>
+			<% end %>
+		</td>
+	</tr>
+</table>

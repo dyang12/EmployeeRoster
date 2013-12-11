@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to new_session_url
     else
       self.current_employee = employee
-      render employee_url(employee)
+      redirect_to employee_url(employee)
     end
   end
   

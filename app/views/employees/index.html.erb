@@ -1,0 +1,24 @@
+<h3>All Employees</h3>
+<table>
+	<% @employees.each do |employee| %>
+		<tr>
+			<td>Name:</td>
+			<td><%= employee.name %></td>
+			<td>
+				<%= button_to "View", employee_url(employee), :method => :get %>
+			</td>
+			<% if  employee.manager_id == current_employee.id %>
+				<td>
+					<%= button_to "Edit", edit_employee_url(employee), :method => :get %>
+				</td>
+				<td>
+					<%= button_to "Delete", employee_url(employee), :method => :delete %>
+				</td>
+			<% elsif current_employee.admin && employee.id == current_employee.id %>
+				<td>
+					<%= button_to "Edit", edit_employee_url(employee), :method => :get %>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

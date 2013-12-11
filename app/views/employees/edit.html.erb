@@ -1,6 +1,6 @@
 <%= button_to "All Employees", employees_url, :method => :get %>
-<h3>New Employee</h3>
-<%= form_for @employee, :url => {:action => "create"} do |f| %>
+<h3>Edit Employee</h3>
+<%= form_for @employee, :url => {:action => "update"} do |f| %>
   <input type="hidden" 
 			 name="authenticity_token"
 			 value="<%= form_authenticity_token %>">

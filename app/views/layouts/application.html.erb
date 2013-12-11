@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+	<h1>Contacts Application</h1>
+	<% if current_employee %>
+	<% else %>
+	<% end %>
+	<% if current_employee.admin %>
+	<%= button_to "Add Employee", new_employee_url, :method => :get %>
+	<% end %>
+	
+	<%= yield %>
 
 </body>
 </html>
